@@ -7,8 +7,8 @@ from typing import Iterable
 
 import numpy as np
 
-from rocketcae.models import EngineInputs, EngineResult
-from rocketcae.propellants import G0, PAIRS, get_pair, mixture_density
+from pychema.models import EngineInputs, EngineResult
+from pychema.propellants import G0, PAIRS, get_pair, mixture_density
 
 logger = logging.getLogger(__name__)
 

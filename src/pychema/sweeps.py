@@ -9,8 +9,8 @@ from typing import Callable, Iterable, Sequence
 import numpy as np
 import pandas as pd
 
-from rocketcae.cea_runner import run_rocket
-from rocketcae.models import EngineInputs, EngineResult, SweepResult
+from pychema.cea_runner import run_rocket
+from pychema.models import EngineInputs, EngineResult, SweepResult
 
 
 def _linspace(lo: float, hi: float, n: int) -> list[float]:

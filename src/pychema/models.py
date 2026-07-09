@@ -1,4 +1,4 @@
-"""Data models for RocketCAE inputs and results."""
+"""Data models for PyCHEMA inputs and results."""
 
 from __future__ import annotations
 

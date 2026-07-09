@@ -11,7 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from rocketcae.validation import (
+from pychema.validation import (
     format_validation_report,
     run_rp1311_example13,
     validation_passed,

@@ -5,13 +5,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from rocketcae.cea_runner import run_from_pair, run_rocket
-from rocketcae.geometry import characteristic_length_suggestion, nozzle_from_thrust
-from rocketcae.models import EngineInputs, EngineResult
-from rocketcae.propellants import get_pair
-from rocketcae.references import compare_isp_to_references
-from rocketcae.report import format_design_brief, write_design_brief
-from rocketcae.sizing import burn_from_thrust, mixture_tank_volumes, size_stage_from_delta_v
+from pychema.cea_runner import run_from_pair, run_rocket
+from pychema.geometry import characteristic_length_suggestion, nozzle_from_thrust
+from pychema.models import EngineInputs, EngineResult
+from pychema.propellants import get_pair
+from pychema.references import compare_isp_to_references
+from pychema.report import format_design_brief, write_design_brief
+from pychema.sizing import burn_from_thrust, mixture_tank_volumes, size_stage_from_delta_v
 
 
 @dataclass

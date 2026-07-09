@@ -1,6 +1,6 @@
 # Engineering helpers (real-life preliminary tools)
 
-RocketCAE is not only "run CEA once." The **mission helper** layer turns equilibrium
+PyCHEMA is not only "run CEA once." The **mission helper** layer turns equilibrium
 Isp into napkin-level stage numbers you can discuss in a design review — with charts
 in the GUI and a Markdown brief you can download.
 
@@ -8,9 +8,9 @@ in the GUI and a Markdown brief you can download.
 
 | Tool | Purpose |
 |------|---------|
-| `rocketcae mission` | CEA + Δv sizing + tanks + 1-D nozzle + burn time + engine comparison + brief |
-| `rocketcae size` | Ideal rocket-equation sizing without CEA (bring your own Isp) |
-| `rocketcae refs` | Approximate open-literature engine Isp/thrust list |
+| `pychema mission` | CEA + Δv sizing + tanks + 1-D nozzle + burn time + engine comparison + brief |
+| `pychema size` | Ideal rocket-equation sizing without CEA (bring your own Isp) |
+| `pychema refs` | Approximate open-literature engine Isp/thrust list |
 | GUI **Mission helper** tab | Same workflow with mass/tank/nozzle/burn charts |
 
 ### Ideal stage sizing
@@ -52,13 +52,13 @@ Humor in the UI stays **pad-to-orbit / student nerd** — not weapons marketing.
 
 ```bash
 # Full preliminary brief (writes results/design_brief.md)
-python -m rocketcae.cli mission --pair lox_rp1 --dv 3000 --payload 100 --thrust 50000
+python -m pychema.cli mission --pair lox_rp1 --dv 3000 --payload 100 --thrust 50000
 
 # Sizing only
-python -m rocketcae.cli size --dv 3000 --isp 320 --payload 100 --thrust 50000 --pair lox_rp1
+python -m pychema.cli size --dv 3000 --isp 320 --payload 100 --thrust 50000 --pair lox_rp1
 
 # Reference engines
-python -m rocketcae.cli refs
+python -m pychema.cli refs
 
 # GUI
 python -m streamlit run app/streamlit_app.py
@@ -66,8 +66,8 @@ python -m streamlit run app/streamlit_app.py
 
 ## Modules
 
-- `rocketcae.sizing` — Δv / burn / tanks  
-- `rocketcae.geometry` — At, Dt, Ae, De, L\*  
-- `rocketcae.references` — open-literature engines  
-- `rocketcae.report` — Markdown design brief  
-- `rocketcae.mission` — orchestrates all of the above with CEA  
+- `pychema.sizing` — Δv / burn / tanks  
+- `pychema.geometry` — At, Dt, Ae, De, L\*  
+- `pychema.references` — open-literature engines  
+- `pychema.report` — Markdown design brief  
+- `pychema.mission` — orchestrates all of the above with CEA  

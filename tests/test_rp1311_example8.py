@@ -6,7 +6,7 @@ import pytest
 
 pytest.importorskip("cea")
 
-from rocketcae.validation import (
+from pychema.validation import (
     compare_all,
     compare_rp1311_example8,
     compare_rp1311_example13,

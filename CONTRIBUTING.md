@@ -1,6 +1,6 @@
-# Contributing to RocketCAE
+# Contributing to PyCHEMA
 
-Thanks for interest in improving RocketCAE.
+Thanks for interest in improving PyCHEMA.
 
 ## Ground rules
 
@@ -14,7 +14,7 @@ Thanks for interest in improving RocketCAE.
 ```bash
 python -m pip install -e ".[dev]"
 pytest -q
-python -m rocketcae.cli validate
+python -m pychema.cli validate
 ```
 
 ## Useful PR types

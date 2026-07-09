@@ -1,4 +1,6 @@
-# RocketCAE
+# PyCHEMA
+
+> **Formerly developed under the working name RocketCAE.** Renamed to **PyCHEMA** to honor the 2017 CHEMA project and avoid confusion with the unrelated PyPI package [RocketCEA](https://pypi.org/project/rocketcea/) and NASA's `cea` package.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
@@ -8,15 +10,15 @@
 
 > **Not flight hardware design.** Outputs are theoretical chemical-equilibrium performance only (Isp, c\*, Tc, …). They do **not** include turbopumps, cooling, structures, injectors, or vehicle Δv.
 
-## Heritage (CHEMA → RocketCAE)
+## Heritage (CHEMA → PyCHEMA)
 
-RocketCAE is a **modern Python continuation of the CHEMA *concept*** from a 2017 graduation project at the University of Turkish Aeronautical Association:
+PyCHEMA is a **modern Python continuation of the CHEMA *concept*** from a 2017 graduation project at the University of Turkish Aeronautical Association:
 
 > *Preliminary Design, Basic Simulation and Optimization of Liquid Rocket Engines*  
 > M. A. Kul, Y. Seymen, M. E. Yıldız, S. M. Köroğlu  
 > Advisors: Assist. Prof. S. Balage, Assist. Prof. D. S. Körpe
 
-CHEMA used MATLAB + legacy CEA executables. **RocketCAE is a new codebase** (not a port of the MATLAB GUI) that keeps the same educational goal — explore many bipropellant design points and lightly optimize — on top of the official modern [`cea`](https://github.com/nasa/cea) package.
+CHEMA used MATLAB + legacy CEA executables. **PyCHEMA is a new codebase** (not a port of the MATLAB GUI) that keeps the same educational goal — explore many bipropellant design points and lightly optimize — on top of the official modern [`cea`](https://github.com/nasa/cea) package.
 
 Original MATLAB dumps, media, and binaries are **not** published here (local-only / gitignored). See [docs/heritage.md](docs/heritage.md).
 
@@ -24,16 +26,16 @@ Original MATLAB dumps, media, and binaries are **not** published here (local-onl
 
 | Capability | Command / entry |
 |------------|-----------------|
-| Single bipropellant evaluation | `rocketcae run` |
-| O/F, Pc, Ae/At sweeps | `rocketcae sweep` |
-| Maximize Isp / c\* / density-Isp | `rocketcae optimize` |
-| Rank curated propellant pairs | `rocketcae rank` |
-| Pareto (max Isp, min Tc) | `rocketcae pareto` |
-| **RP-1311 samples 1–14** (smoke + Ex.8/13 numerical) | `rocketcae validate` |
+| Single bipropellant evaluation | `pychema run` |
+| O/F, Pc, Ae/At sweeps | `pychema sweep` |
+| Maximize Isp / c\* / density-Isp | `pychema optimize` |
+| Rank curated propellant pairs | `pychema rank` |
+| Pareto (max Isp, min Tc) | `pychema pareto` |
+| **RP-1311 samples 1–14** (smoke + Ex.8/13 numerical) | `pychema validate` |
 | GUI | `streamlit run app/streamlit_app.py` |
-| **Mission helper** (Δv, tanks, nozzle, brief) | `rocketcae mission` |
-| Ideal stage sizing | `rocketcae size` |
-| Real-engine Isp references | `rocketcae refs` |
+| **Mission helper** (Δv, tanks, nozzle, brief) | `pychema mission` |
+| Ideal stage sizing | `pychema size` |
+| Real-engine Isp references | `pychema refs` |
 
 ## Validation (NASA RP-1311 samples 1–14)
 
@@ -45,10 +47,10 @@ Original MATLAB dumps, media, and binaries are **not** published here (local-onl
 | `--case full` | Numerical + smoke |
 
 ```bash
-python -m rocketcae.cli validate --case list
-python -m rocketcae.cli validate --case samples
-python -m rocketcae.cli validate --case all
-python -m rocketcae.cli validate --case full
+python -m pychema.cli validate --case list
+python -m pychema.cli validate --case samples
+python -m pychema.cli validate --case all
+python -m pychema.cli validate --case full
 python examples/run_rp1311_all.py
 ```
 
@@ -62,8 +64,8 @@ Docs: [docs/rp1311_samples.md](docs/rp1311_samples.md), [docs/validation.md](doc
 ## Install
 
 ```bash
-git clone https://github.com/Nikabanzai/RocketCAE.git
-cd RocketCAE
+git clone https://github.com/Nikabanzai/PyCHEMA.git
+cd PyCHEMA
 python -m venv .venv
 
 # Windows
@@ -76,18 +78,18 @@ python -m pip install -e ".[dev]"
 ## Quick start
 
 ```bash
-rocketcae list-pairs
+pychema list-pairs
 
 # LOX/LH2 near Example 8 conditions
-rocketcae run --pair lox_lh2 --of 5.55 --pc 53.3 --eps 25
+pychema run --pair lox_lh2 --of 5.55 --pc 53.3 --eps 25
 
 # LOX/RP-1 (CHEMA-style sample)
-rocketcae run --pair lox_rp1 --of 2.3 --pc 66.5 --eps 16
+pychema run --pair lox_rp1 --of 2.3 --pc 66.5 --eps 16
 
-rocketcae sweep --pair lox_ch4 --param of --n 21
-rocketcae optimize --pair lox_lh2 --vars of --objective isp
-rocketcae rank --pc 50 --eps 40
-rocketcae validate
+pychema sweep --pair lox_ch4 --param of --n 21
+pychema optimize --pair lox_lh2 --vars of --objective isp
+pychema rank --pc 50 --eps 40
+pychema validate
 
 streamlit run app/streamlit_app.py
 ```
@@ -95,7 +97,7 @@ streamlit run app/streamlit_app.py
 If console scripts are not on `PATH`:
 
 ```bash
-python -m rocketcae.cli validate
+python -m pychema.cli validate
 ```
 
 ## Curated propellant pairs
@@ -114,8 +116,8 @@ Arbitrary CEA species: `--fuel` / `--oxidizer`.
 ## Project layout
 
 ```text
-RocketCAE/
-  src/rocketcae/     # library + CLI + validation
+PyCHEMA/
+  src/pychema/     # library + CLI + validation
   app/               # Streamlit GUI
   tests/
   examples/          # including rp1311_example8.py
@@ -125,14 +127,14 @@ RocketCAE/
 
 ## Citing
 
-If you use RocketCAE, please cite NASA CEA / RP-1311 for the thermodynamics engine, and optionally this software (see [CITATION.cff](CITATION.cff)).
+If you use PyCHEMA, please cite NASA CEA / RP-1311 for the thermodynamics engine, and optionally this software (see [CITATION.cff](CITATION.cff)).
 
 ```bibtex
-@software{RocketCAE2026,
+@software{PyCHEMA2026,
   author = {Kul, Muhammed Ali},
-  title  = {RocketCAE: Preliminary liquid rocket trades via NASA CEA},
+  title  = {PyCHEMA: Preliminary liquid rocket trades via NASA CEA},
   year   = {2026},
-  url    = {https://github.com/Nikabanzai/RocketCAE},
+  url    = {https://github.com/Nikabanzai/PyCHEMA},
   note   = {Conceptual successor to CHEMA 2017, DOI 10.13140/RG.2.2.31672.55043}
 }
 ```
@@ -145,7 +147,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and PRs welcome for propellant da
 
 - **NASA CEA** — Chemical Equilibrium with Applications ([Apache-2.0](https://github.com/nasa/cea))
 - **CHEMA (2017)** — Kul, Seymen, Yıldız, Köroğlu; advisors Balage & Körpe — THK University, June 2017, DOI [10.13140/RG.2.2.31672.55043](https://doi.org/10.13140/RG.2.2.31672.55043)  
-  *Concept predecessor only; RocketCAE is independently implemented.*
+  *Concept predecessor only; PyCHEMA is independently implemented.*
 
 ## Disclaimer
 
@@ -179,10 +181,10 @@ Open-source LRE tools we study for ideas (not dependencies): see [docs/related_w
 
 `ash
 # One-shot design: CEA + Rao contour + CAD files
-python -m rocketcae.cli design --pair lox_rp1 --thrust 50000 --pc 50 --eps 25
+python -m pychema.cli design --pair lox_rp1 --thrust 50000 --pc 50 --eps 25
 
 # Contour only
-python -m rocketcae.cli nozzle --kind rao --dt-mm 80 --eps 25
+python -m pychema.cli nozzle --kind rao --dt-mm 80 --eps 25
 `
 
 See [docs/chema_gap_analysis.md](docs/chema_gap_analysis.md) and [docs/related_work.md](docs/related_work.md).

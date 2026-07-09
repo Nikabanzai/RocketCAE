@@ -1,11 +1,11 @@
 cff-version: 1.2.0
-message: "If you use RocketCAE, please cite it and the CHEMA 2017 report / NASA CEA as appropriate."
+message: "If you use PyCHEMA, please cite it and the CHEMA 2017 report / NASA CEA as appropriate."
 type: software
-title: "RocketCAE: Preliminary liquid rocket trade studies via NASA CEA"
-version: 0.1.0
+title: "PyCHEMA: Preliminary liquid rocket trade studies via NASA CEA"
+version: 0.2.0
 date-released: "2026-07-09"
-url: "https://github.com/Nikabanzai/RocketCAE"
-repository-code: "https://github.com/Nikabanzai/RocketCAE"
+url: "https://github.com/Nikabanzai/PyCHEMA"
+repository-code: "https://github.com/Nikabanzai/PyCHEMA"
 license: Apache-2.0
 authors:
   - family-names: Kul
@@ -13,7 +13,7 @@ authors:
     email: muhammeda.kul@gmail.com
     affiliation: Turkish Technic
 abstract: >-
-  RocketCAE is a Python library, CLI, and Streamlit GUI for preliminary
+  PyCHEMA is a Python library, CLI, and Streamlit GUI for preliminary
   liquid bipropellant rocket performance trades using NASA Chemical Equilibrium
   with Applications (CEA). It is a modern conceptual successor to the 2017
   CHEMA graduation project (DOI 10.13140/RG.2.2.31672.55043) at the University

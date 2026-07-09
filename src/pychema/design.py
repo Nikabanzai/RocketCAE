@@ -8,12 +8,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from rocketcae.cea_runner import run_from_pair
-from rocketcae.geometry import characteristic_length_suggestion, nozzle_from_thrust
-from rocketcae.models import EngineResult
-from rocketcae.nozzle import NozzleContour, contour_from_throat_area
-from rocketcae.propellants import G0, get_pair
-from rocketcae.references import compare_isp_to_references
+from pychema.cea_runner import run_from_pair
+from pychema.geometry import characteristic_length_suggestion, nozzle_from_thrust
+from pychema.models import EngineResult
+from pychema.nozzle import NozzleContour, contour_from_throat_area
+from pychema.propellants import G0, get_pair
+from pychema.references import compare_isp_to_references
 
 
 @dataclass

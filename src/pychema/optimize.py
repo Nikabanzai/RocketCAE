@@ -8,8 +8,8 @@ from typing import Callable, Literal
 import numpy as np
 from scipy.optimize import differential_evolution, minimize_scalar
 
-from rocketcae.cea_runner import run_rocket
-from rocketcae.models import EngineInputs, EngineResult
+from pychema.cea_runner import run_rocket
+from pychema.models import EngineInputs, EngineResult
 
 
 ObjectiveName = Literal["isp", "isp_vac", "cstar", "neg_tc", "density_isp"]

@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "rocketcae"
-version = "0.1.0"
-description = "Preliminary liquid rocket trade studies using NASA CEA (Python), with CLI and GUI."
+name = "pychema"
+version = "0.2.0"
+description = "PyCHEMA: open-source CHEMA-inspired LRE trade studies using official NASA cea (CLI + GUI)."
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.11"
@@ -26,10 +26,10 @@ gui = ["streamlit>=1.28"]
 dev = ["pytest>=7.0", "streamlit>=1.28"]
 
 [project.scripts]
-rocketcae = "rocketcae.cli:main"
+pychema = "pychema.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/Nikabanzai/RocketCAE"
+Homepage = "https://github.com/Nikabanzai/PyCHEMA"
 Documentation = "https://nasa.github.io/cea/"
 
 [tool.setuptools.packages.find]

@@ -1,17 +1,17 @@
-# CHEMA feature gap analysis → RocketCAE
+# CHEMA feature gap analysis → PyCHEMA
 
 Source: `Chema/ChemaV7.m` (GUIDE GUI, 2017) + paper DOI 10.13140/RG.2.2.31672.55043.
 
 ## Feature matrix
 
-| CHEMA capability | RocketCAE status | Notes |
+| CHEMA capability | PyCHEMA status | Notes |
 |------------------|------------------|-------|
 | Write CEA input + run CEA300.exe | **Replaced** | Official `cea` Python API |
 | Multi fuel/oxidizer slots (up to 3+3) | Partial | Curated pairs; multi-species later |
 | FAC (`ac/at`) / mdot / sub / sup ratios | Partial | IAC default; FAC via validation Ex.9 |
 | Frozen + ions flags | Not yet | Ex.12 sample smoke covers frozen path |
 | Parse CEA plot columns (Isp, Ivac, Mach, …) | **Yes** | `EngineResult` |
-| **Rao nozzle 80% + plot + 3-D revolve** | **Restored** | `rocketcae.nozzle` |
+| **Rao nozzle 80% + plot + 3-D revolve** | **Restored** | `pychema.nozzle` |
 | CAD coordinates export | **Restored** | CSV + XYZ for SolidWorks |
 | Optimize O/F, P, ε for max Isp/thrust | Partial | O/F + O/F+Pc optimize; thrust max later |
 | Rank fuels | **Yes** | `rank` |

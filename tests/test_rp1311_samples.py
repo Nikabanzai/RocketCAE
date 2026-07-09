@@ -6,8 +6,8 @@ import pytest
 
 pytest.importorskip("cea")
 
-from rocketcae.rp1311_catalog import RP1311_SAMPLES, get_sample, official_sample_path
-from rocketcae.rp1311_smoke import run_all_official_samples, run_official_sample, smoke_passed
+from pychema.rp1311_catalog import RP1311_SAMPLES, get_sample, official_sample_path
+from pychema.rp1311_smoke import run_all_official_samples, run_official_sample, smoke_passed
 
 
 def test_catalog_has_14():

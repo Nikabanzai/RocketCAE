@@ -1,6 +1,6 @@
 # Related open-source projects (ideas, not dependencies)
 
-Honest notes for RocketCAE maintainers. Neither repo is “trash”; they solve
+Honest notes for PyCHEMA maintainers. Neither repo is “trash”; they solve
 overlapping problems with different maturity and scope.
 
 ## cmflannery/rocket (`openrocketengine`)
@@ -16,7 +16,7 @@ overlapping problems with different maturity and scope.
 |------|----------------|
 | `EngineInputs.from_propellants(...)` → design | Clean API: thrust + Pc + MR in, performance + geometry out |
 | **Units system** | Avoids bar/Pa/psi bugs |
-| **Rao / conical nozzle contours** + CSV export | CHEMA already had Rao figures — natural RocketCAE upgrade |
+| **Rao / conical nozzle contours** + CSV export | CHEMA already had Rao figures — natural PyCHEMA upgrade |
 | Engine **dashboard plots** | Cross-section + performance curves |
 | Cycles (GG, SC, pressure-fed) modules | Beyond pure CEA (thermodynamic cycle bookkeeping) |
 | Trade study / uncertainty examples | Research-grade workflows |
@@ -28,7 +28,7 @@ overlapping problems with different maturity and scope.
 - Broader scope → more surface area to maintain  
 - “Tanks coming soon” historically; check current code  
 
-### What RocketCAE can lend (implement ourselves, MIT-friendly ideas)
+### What PyCHEMA can lend (implement ourselves, MIT-friendly ideas)
 
 1. **Rao bell nozzle contour** generator + plot + CSV (CHEMA had this; we don’t yet)  
 2. **Unit-aware inputs** (even a thin wrapper: always document SI)  
@@ -59,11 +59,11 @@ Do **not** copy their code blindly if licenses conflict with how we vendor; **re
 
 ### Limits / caveats
 
-- **GPL-2.0:** if we *copy* code into RocketCAE (Apache-2.0), license compatibility needs care (GPL tends to “infect” combined works). Prefer **cite + reimplement** or call as optional external tool.  
+- **GPL-2.0:** if we *copy* code into PyCHEMA (Apache-2.0), license compatibility needs care (GPL tends to “infect” combined works). Prefer **cite + reimplement** or call as optional external tool.  
 - Not biprop CEA / full engine design — niche nozzle type  
 - Older Tk style; small codebase (~few files)  
 
-### What RocketCAE can lend
+### What PyCHEMA can lend
 
 1. **CAD export pattern** (CSV/XYZ of wall contour) for *conventional* Rao/conical nozzles first  
 2. **Live parameter → plot** UX (we use Streamlit; same idea)  
@@ -73,21 +73,21 @@ Do **not** copy their code blindly if licenses conflict with how we vendor; **re
 
 ## Verdict
 
-| Repo | Trash? | Steal ideas? | Priority for RocketCAE |
+| Repo | Trash? | Steal ideas? | Priority for PyCHEMA |
 |------|--------|--------------|-------------------------|
 | cmflannery/rocket | **No** — solid LRE toolkit | **Yes** — API shape, Rao, dashboards, units | **High** |
 | mvernacc/aerospike… | **No** — focused & useful | **Yes** — CAD export, live plots; GPL caution | **Low/medium** (niche) |
 
-**Neither is trash.** RocketCAE’s differentiator remains: official NASA `cea`, RP-1311 validation, CHEMA heritage, Streamlit + mission sizing. Borrow *patterns*, keep our CEA stack, reimplement geometry with citations.
+**Neither is trash.** PyCHEMA’s differentiator remains: official NASA `cea`, RP-1311 validation, CHEMA heritage, Streamlit + mission sizing. Borrow *patterns*, keep our CEA stack, reimplement geometry with citations.
 
 ---
 
-## Implemented in RocketCAE (from this review)
+## Implemented in PyCHEMA (from this review)
 
 | Feature | Module / command |
 |---------|------------------|
-| Rao 80% bell + chamber (CHEMA) | `rocketcae.nozzle`, `rocketcae nozzle` |
+| Rao 80% bell + chamber (CHEMA) | `pychema.nozzle`, `pychema nozzle` |
 | CAD XYZ + CSV export | `to_xyz_cad`, `to_csv` |
-| design_engine(thrust, Pc, pair) | `rocketcae.design`, `rocketcae design` |
+| design_engine(thrust, Pc, pair) | `pychema.design`, `pychema design` |
 | GUI Nozzle CAD tab | Streamlit |
 | Gap analysis vs CHEMA | `docs/chema_gap_analysis.md` |

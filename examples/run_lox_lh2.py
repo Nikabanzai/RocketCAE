@@ -1,6 +1,6 @@
 """Example: single LOX/LH2 evaluation (NASA RP-1311 style)."""
 
-from rocketcae.cea_runner import run_from_pair
+from pychema.cea_runner import run_from_pair
 
 
 def main() -> None:

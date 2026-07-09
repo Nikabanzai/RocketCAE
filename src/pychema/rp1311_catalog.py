@@ -1,11 +1,11 @@
 """Catalog of NASA RP-1311 sample problems (McBride & Gordon, 1996).
 
 Official Python drivers ship with the ``cea`` package under
-``cea/samples/rp1311/exampleN.py``. RocketCAE:
+``cea/samples/rp1311/exampleN.py``. PyCHEMA:
 
 * **Smoke-tests** all 14 by executing those scripts
 * **Numerically validates** Examples 8 and 13 against published tables
-  (see ``rocketcae.validation``)
+  (see ``pychema.validation``)
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ class RP1311Sample:
     summary: str
     reactants: str
     notes: str = ""
-    numerical_validation: bool = False  # detailed checkpoints in rocketcae.validation
+    numerical_validation: bool = False  # detailed checkpoints in pychema.validation
 
 
 # Descriptions adapted from the classic CEA SAMPLE PROBLEMS listing (RP-1311).
@@ -95,7 +95,7 @@ RP1311_SAMPLES: tuple[RP1311Sample, ...] = (
         "Rocket IAC — LOX/LH2",
         "o/f=5.55157; Pc=53.3172 bar; subar/supar/pi/p; SI equilibrium.",
         "H2(L) / O2(L)",
-        notes="Primary RocketCAE bipropellant validation case.",
+        notes="Primary PyCHEMA bipropellant validation case.",
         numerical_validation=True,
     ),
     RP1311Sample(

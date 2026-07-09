@@ -6,9 +6,9 @@ from dataclasses import replace
 
 import pandas as pd
 
-from rocketcae.cea_runner import run_rocket
-from rocketcae.models import EngineInputs
-from rocketcae.propellants import list_propellant_pairs
+from pychema.cea_runner import run_rocket
+from pychema.models import EngineInputs
+from pychema.propellants import list_propellant_pairs
 
 
 def rank_propellant_pairs(

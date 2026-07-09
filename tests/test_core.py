@@ -1,4 +1,4 @@
-"""Tests for RocketCAE core (require nasa cea package)."""
+"""Tests for PyCHEMA core (require nasa cea package)."""
 
 from __future__ import annotations
 
@@ -6,12 +6,12 @@ import pytest
 
 cea = pytest.importorskip("cea")
 
-from rocketcae.cea_runner import run_from_pair, run_rocket
-from rocketcae.models import EngineInputs
-from rocketcae.optimize import optimize_of, pareto_front_2d
-from rocketcae.propellants import get_pair, list_propellant_pairs
-from rocketcae.ranking import rank_propellant_pairs
-from rocketcae.sweeps import sweep_of, sweep_to_dataframe
+from pychema.cea_runner import run_from_pair, run_rocket
+from pychema.models import EngineInputs
+from pychema.optimize import optimize_of, pareto_front_2d
+from pychema.propellants import get_pair, list_propellant_pairs
+from pychema.ranking import rank_propellant_pairs
+from pychema.sweeps import sweep_of, sweep_to_dataframe
 
 
 def test_list_pairs():

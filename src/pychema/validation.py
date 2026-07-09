@@ -422,13 +422,13 @@ def format_validation_report(
 
 
 # Re-export smoke suite for a single validation entry point
-from rocketcae.rp1311_smoke import (  # noqa: E402
+from pychema.rp1311_smoke import (  # noqa: E402
     format_smoke_report,
     run_all_official_samples,
     run_official_sample,
     smoke_passed,
 )
-from rocketcae.rp1311_catalog import RP1311_SAMPLES, list_samples  # noqa: E402
+from pychema.rp1311_catalog import RP1311_SAMPLES, list_samples  # noqa: E402
 
 
 def full_validation_report() -> str:

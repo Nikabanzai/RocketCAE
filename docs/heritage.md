@@ -1,4 +1,4 @@
-# Heritage: CHEMA (2017) → RocketCAE (2026)
+# Heritage: CHEMA (2017) → PyCHEMA (2026)
 
 ## Primary citation (original graduation project)
 
@@ -28,20 +28,20 @@ Student IDs (from report): Kul 120 122 036 · Seymen 120 122 043 · Yıldız 120
 - LRE performance, chamber/nozzle (incl. **Rao nozzle** geometry figures), multi-objective optimization hooks
 - Goal: explore many liquid engines and propose viable *preliminary* designs
 
-### Open-source positioning of RocketCAE
+### Open-source positioning of PyCHEMA
 
-RocketCAE is a **modern Python reimplementation of the CHEMA *concept***:
+PyCHEMA is a **modern Python reimplementation of the CHEMA *concept***:
 
 - New codebase (not a dump of MATLAB sources or media)
 - Official NASA **`cea`** package (Apache-2.0) instead of CEA300.exe
 - Streamlit GUI + CLI + RP-1311 validation + mission sizing helpers
-- Credits CHEMA authors/advisors as **concept predecessors**; RocketCAE maintained as independent software
+- Credits CHEMA authors/advisors as **concept predecessors**; PyCHEMA maintained as independent software
 
 Please cite:
 
 1. **CHEMA 2017** (DOI above) for the original project idea  
 2. **NASA CEA / RP-1311** for the thermodynamics engine  
-3. **RocketCAE** (this repo / CITATION.cff) for the modern tool  
+3. **PyCHEMA** (this repo / CITATION.cff) for the modern tool  
 
 ## Local archive
 

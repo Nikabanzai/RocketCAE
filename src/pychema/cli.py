@@ -1,4 +1,4 @@
-"""Command-line interface for RocketCAE."""
+"""Command-line interface for PyCHEMA."""
 
 from __future__ import annotations
 
@@ -7,12 +7,12 @@ import json
 import sys
 from pathlib import Path
 
-from rocketcae.cea_runner import run_from_pair, run_rocket
-from rocketcae.models import EngineInputs
-from rocketcae.optimize import multi_objective_of_sweep, optimize_of, optimize_of_pc, pareto_front_2d
-from rocketcae.propellants import get_pair, list_propellant_pairs
-from rocketcae.ranking import rank_propellant_pairs
-from rocketcae.sweeps import sweep_area_ratio, sweep_of, sweep_pc, sweep_to_dataframe
+from pychema.cea_runner import run_from_pair, run_rocket
+from pychema.models import EngineInputs
+from pychema.optimize import multi_objective_of_sweep, optimize_of, optimize_of_pc, pareto_front_2d
+from pychema.propellants import get_pair, list_propellant_pairs
+from pychema.ranking import rank_propellant_pairs
+from pychema.sweeps import sweep_area_ratio, sweep_of, sweep_pc, sweep_to_dataframe
 
 
 def _print_result(r) -> None:
@@ -154,7 +154,7 @@ def cmd_pareto(args: argparse.Namespace) -> int:
 
 
 def cmd_validate(args: argparse.Namespace) -> int:
-    from rocketcae import rp1311_catalog, rp1311_smoke, validation
+    from pychema import rp1311_catalog, rp1311_smoke, validation
 
     case = getattr(args, "case", "all")
     if case == "list":
@@ -178,7 +178,7 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 
 def cmd_refs(_: argparse.Namespace) -> int:
-    from rocketcae.references import list_reference_engines
+    from pychema.references import list_reference_engines
     for e in list_reference_engines():
         iv = f"{e.isp_vac_s:.0f}" if e.isp_vac_s else "-"
         isl = f"{e.isp_sl_s:.0f}" if e.isp_sl_s else "-"
@@ -187,7 +187,7 @@ def cmd_refs(_: argparse.Namespace) -> int:
 
 
 def cmd_mission(args: argparse.Namespace) -> int:
-    from rocketcae.mission import run_mission_helper
+    from pychema.mission import run_mission_helper
 
     res = run_mission_helper(
         pair_key=args.pair,
@@ -208,8 +208,8 @@ def cmd_mission(args: argparse.Namespace) -> int:
 
 
 def cmd_size(args: argparse.Namespace) -> int:
-    from rocketcae.sizing import size_stage_from_delta_v, burn_from_thrust, mixture_tank_volumes
-    from rocketcae.propellants import get_pair
+    from pychema.sizing import size_stage_from_delta_v, burn_from_thrust, mixture_tank_volumes
+    from pychema.propellants import get_pair
 
     s = size_stage_from_delta_v(args.dv, args.isp, args.payload, args.structure)
     if not s.success:
@@ -238,7 +238,7 @@ def cmd_size(args: argparse.Namespace) -> int:
 
 
 def cmd_design(args: argparse.Namespace) -> int:
-    from rocketcae.design import design_engine
+    from pychema.design import design_engine
 
     d = design_engine(
         pair_key=args.pair,
@@ -271,7 +271,7 @@ def cmd_design(args: argparse.Namespace) -> int:
 
 
 def cmd_nozzle(args: argparse.Namespace) -> int:
-    from rocketcae.nozzle import conical_contour, rao_bell_contour
+    from pychema.nozzle import conical_contour, rao_bell_contour
     import math
 
     if args.dt_mm:
@@ -305,8 +305,8 @@ def cmd_nozzle(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="rocketcae",
-        description="RocketCAE — preliminary LRE trades via NASA CEA",
+        prog="pychema",
+        description="PyCHEMA — preliminary LRE trades via NASA CEA",
     )
     sub = p.add_subparsers(dest="command", required=True)
 

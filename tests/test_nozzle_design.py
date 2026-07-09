@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from rocketcae.design import design_engine
-from rocketcae.nozzle import conical_contour, rao_bell_contour
+from pychema.design import design_engine
+from pychema.nozzle import conical_contour, rao_bell_contour
 
 
 def test_conical_eps():

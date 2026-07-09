@@ -2,9 +2,9 @@
 
 from pathlib import Path
 
-from rocketcae.models import EngineInputs
-from rocketcae.propellants import get_pair
-from rocketcae.sweeps import sweep_of, sweep_to_dataframe
+from pychema.models import EngineInputs
+from pychema.propellants import get_pair
+from pychema.sweeps import sweep_of, sweep_to_dataframe
 
 
 def main() -> None:

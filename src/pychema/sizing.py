@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import math
 
-from rocketcae.propellants import G0
+from pychema.propellants import G0
 
 
 @dataclass(frozen=True)

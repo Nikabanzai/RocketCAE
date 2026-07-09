@@ -1,4 +1,4 @@
-"""RocketCAE Streamlit GUI."""
+"""PyCHEMA Streamlit GUI."""
 from __future__ import annotations
 import sys
 from pathlib import Path
@@ -7,17 +7,17 @@ sys.path.insert(0, str(ROOT / "src"))
 import numpy as np
 import pandas as pd
 import streamlit as st
-from rocketcae.cea_runner import run_rocket
-from rocketcae.models import EngineInputs
-from rocketcae.optimize import multi_objective_of_sweep, optimize_of, pareto_front_2d
-from rocketcae.propellants import get_pair, list_propellant_pairs
-from rocketcae.ranking import rank_propellant_pairs
-from rocketcae.sweeps import sweep_of, sweep_to_dataframe
+from pychema.cea_runner import run_rocket
+from pychema.models import EngineInputs
+from pychema.optimize import multi_objective_of_sweep, optimize_of, pareto_front_2d
+from pychema.propellants import get_pair, list_propellant_pairs
+from pychema.ranking import rank_propellant_pairs
+from pychema.sweeps import sweep_of, sweep_to_dataframe
 
-st.set_page_config(page_title="RocketCAE", page_icon="R", layout="wide")
+st.set_page_config(page_title="PyCHEMA", page_icon="R", layout="wide")
 
 with st.sidebar:
-    st.markdown("### RocketCAE")
+    st.markdown("### PyCHEMA")
     st.caption("CEA trades -- not flight hardware")
     st.markdown("> *May your c* be high, walls cool, delta-v non-weaponized.*")
     st.markdown("**Tagline:** Pad-to-orbit theory -- not silo kits.")
@@ -32,7 +32,7 @@ with tab_nozzle:
     bell = c3.slider("Bell fraction", 0.6, 1.0, 0.8, 0.05)
     chamber = st.checkbox("Include chamber + convergent", value=True)
     if st.button("Generate contour", type="primary"):
-        from rocketcae.nozzle import conical_contour, rao_bell_contour
+        from pychema.nozzle import conical_contour, rao_bell_contour
         rt = dt / 2000.0
         if kind == "conical":
             cont = conical_contour(rt, eps)
@@ -56,9 +56,9 @@ with tab_nozzle:
 
 
 st.divider()
-    st.markdown("[GitHub](https://github.com/Nikabanzai/RocketCAE) | [CEA docs](https://nasa.github.io/cea/)")
+    st.markdown("[GitHub](https://github.com/Nikabanzai/PyCHEMA) | [CEA docs](https://nasa.github.io/cea/)")
 
-st.title("RocketCAE")
+st.title("PyCHEMA")
 st.caption("Preliminary LRE explorer via NASA CEA + ideal sizing. Not flight design. Not targeting. Not an ICBM kit.")
 
 with st.expander("Disclaimer", expanded=False):
@@ -66,7 +66,7 @@ with st.expander("Disclaimer", expanded=False):
 
 with st.expander("Validation", expanded=False):
     if st.button("Run Ex.8+13 numerical validation"):
-        from rocketcae.validation import format_validation_report, validation_passed
+        from pychema.validation import format_validation_report, validation_passed
         with st.spinner("Validating..."):
             rep = format_validation_report(cases="all")
         st.code(rep)
@@ -183,7 +183,7 @@ with tab_mission:
     structure = st.slider("Structural fraction", 0.03, 0.25, 0.10, 0.01)
     use_vac = st.checkbox("Use vacuum Isp", value=True)
     if st.button("Run mission helper", type="primary"):
-        from rocketcae.mission import run_mission_helper
+        from pychema.mission import run_mission_helper
         with st.spinner("Building brief..."):
             res = run_mission_helper(pair_key=pair_labels[label], of_ratio=of, pc_bar=pc, area_ratio=eps, delta_v_m_s=dv, payload_kg=payload, structural_fraction=structure, thrust_n=thrust_kn * 1000.0, use_vacuum_isp=use_vac, report_path='results/design_brief.md')
         if not res.cea.success:
@@ -235,7 +235,7 @@ with tab_nozzle:
     bell = c3.slider("Bell fraction", 0.6, 1.0, 0.8, 0.05)
     chamber = st.checkbox("Include chamber + convergent", value=True)
     if st.button("Generate contour", type="primary"):
-        from rocketcae.nozzle import conical_contour, rao_bell_contour
+        from pychema.nozzle import conical_contour, rao_bell_contour
         rt = dt / 2000.0
         if kind == "conical":
             cont = conical_contour(rt, eps)
@@ -259,4 +259,4 @@ with tab_nozzle:
 
 
 st.divider()
-st.markdown("CEA | RocketCAE | Peaceful propulsion trades | ICBM jokes: politely declined")
+st.markdown("CEA | PyCHEMA | Peaceful propulsion trades | ICBM jokes: politely declined")

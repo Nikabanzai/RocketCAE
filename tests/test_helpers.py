@@ -1,8 +1,8 @@
 """Tests for sizing / geometry / mission helpers."""
 
-from rocketcae.geometry import nozzle_from_thrust
-from rocketcae.references import compare_isp_to_references, list_reference_engines
-from rocketcae.sizing import burn_from_thrust, size_stage_from_delta_v, mixture_tank_volumes
+from pychema.geometry import nozzle_from_thrust
+from pychema.references import compare_isp_to_references, list_reference_engines
+from pychema.sizing import burn_from_thrust, size_stage_from_delta_v, mixture_tank_volumes
 
 
 def test_size_stage_basic():

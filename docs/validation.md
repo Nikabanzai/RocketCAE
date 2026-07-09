@@ -1,17 +1,17 @@
 # Validation against NASA RP-1311
 
-RocketCAE validates live NASA CEA results against published documentation examples.
+PyCHEMA validates live NASA CEA results against published documentation examples.
 
 ```bash
-python -m rocketcae.cli validate              # Examples 8 + 13
-python -m rocketcae.cli validate --case ex8
-python -m rocketcae.cli validate --case ex13
+python -m pychema.cli validate              # Examples 8 + 13
+python -m pychema.cli validate --case ex8
+python -m pychema.cli validate --case ex13
 python examples/rp1311_example8.py
 python examples/rp1311_example13.py
 pytest tests/test_rp1311_example8.py -q
 ```
 
-Implementation: `src/rocketcae/validation.py`.
+Implementation: `src/pychema/validation.py`.
 
 **API note:** Older docs show `b"Species"` byte strings; current `cea` 3.x accepts plain `str` names (used here).
 
@@ -92,6 +92,6 @@ Per checkpoint: relative error ≤ **0.5%** **or** quantity-specific absolute to
 See [rp1311_samples.md](rp1311_samples.md) for the complete catalog matching the classic CEA SAMPLE PROBLEMS listing (tp, tv, hp, uv, detonation, shock, rocket IAC/FAC).
 
 ```bash
-python -m rocketcae.cli validate --case samples   # smoke all 14
-python -m rocketcae.cli validate --case full      # Ex.8+13 numerical + smoke
+python -m pychema.cli validate --case samples   # smoke all 14
+python -m pychema.cli validate --case full      # Ex.8+13 numerical + smoke
 ```

@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from rocketcae.rp1311_smoke import format_smoke_report, run_all_official_samples, smoke_passed
+from pychema.rp1311_smoke import format_smoke_report, run_all_official_samples, smoke_passed
 
 
 def main() -> int:

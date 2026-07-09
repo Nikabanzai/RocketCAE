@@ -8,7 +8,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
-from rocketcae.rp1311_catalog import RP1311_SAMPLES, get_sample, official_sample_path
+from pychema.rp1311_catalog import RP1311_SAMPLES, get_sample, official_sample_path
 
 
 @dataclass

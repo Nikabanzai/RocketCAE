@@ -7,14 +7,14 @@ Modern Python drivers ship with the `cea` package:
 site-packages/cea/samples/rp1311/example1.py … example14.py
 ```
 
-RocketCAE provides:
+PyCHEMA provides:
 
 | Layer | Command |
 |-------|---------|
-| Catalog | `python -m rocketcae.cli validate --case list` |
-| Smoke (all 14) | `python -m rocketcae.cli validate --case samples` |
-| Numerical Ex.8+13 | `python -m rocketcae.cli validate --case all` |
-| Everything | `python -m rocketcae.cli validate --case full` |
+| Catalog | `python -m pychema.cli validate --case list` |
+| Smoke (all 14) | `python -m pychema.cli validate --case samples` |
+| Numerical Ex.8+13 | `python -m pychema.cli validate --case all` |
+| Everything | `python -m pychema.cli validate --case full` |
 
 ## Catalog
 
@@ -35,7 +35,7 @@ RocketCAE provides:
 | 13 | rocket_iac | Rocket tripropellant + insert | N2H4+Be / H2O2 **[numerical]** |
 | 14 | tp | Condensed H2O effects | H2(L)/O2(L) |
 
-**[numerical]** = RocketCAE compares key outputs to published documentation tables.
+**[numerical]** = PyCHEMA compares key outputs to published documentation tables.
 
 ## Problem families → CEA solvers
 
@@ -48,7 +48,7 @@ RocketCAE provides:
 
 ## Legacy input snippets
 
-The classic free-form CEA input for each sample is reproduced in NASA RP-1311 and the user-provided SAMPLE PROBLEMS listing (Examples 1–14). RocketCAE does not re-ship those `.inp` files; it uses the maintained Python ports in `nasa/cea`.
+The classic free-form CEA input for each sample is reproduced in NASA RP-1311 and the user-provided SAMPLE PROBLEMS listing (Examples 1–14). PyCHEMA does not re-ship those `.inp` files; it uses the maintained Python ports in `nasa/cea`.
 
 ## References
 
