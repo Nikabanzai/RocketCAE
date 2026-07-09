@@ -176,6 +176,66 @@ def cmd_validate(args: argparse.Namespace) -> int:
     return 0 if validation.validation_passed(cases=case) else 1
 
 
+
+def cmd_refs(_: argparse.Namespace) -> int:
+    from rocketcae.references import list_reference_engines
+    for e in list_reference_engines():
+        iv = f"{e.isp_vac_s:.0f}" if e.isp_vac_s else "-"
+        isl = f"{e.isp_sl_s:.0f}" if e.isp_sl_s else "-"
+        print(f"{e.key:14s}  {e.name:28s}  Isp_sl={isl:>5}s  Isp_vac={iv:>5}s  {e.oxidizer}/{e.fuel}")
+    return 0
+
+
+def cmd_mission(args: argparse.Namespace) -> int:
+    from rocketcae.mission import run_mission_helper
+
+    res = run_mission_helper(
+        pair_key=args.pair,
+        of_ratio=args.of,
+        pc_bar=args.pc,
+        area_ratio=args.eps,
+        delta_v_m_s=args.dv,
+        payload_kg=args.payload,
+        structural_fraction=args.structure,
+        thrust_n=args.thrust,
+        use_vacuum_isp=not args.use_sl_isp,
+        report_path=args.out,
+    )
+    print(res.brief_markdown)
+    if res.brief_path:
+        print(f"\nWrote {res.brief_path}")
+    return 0 if res.cea.success else 1
+
+
+def cmd_size(args: argparse.Namespace) -> int:
+    from rocketcae.sizing import size_stage_from_delta_v, burn_from_thrust, mixture_tank_volumes
+    from rocketcae.propellants import get_pair
+
+    s = size_stage_from_delta_v(args.dv, args.isp, args.payload, args.structure)
+    if not s.success:
+        print(f"FAILED: {s.message}")
+        return 1
+    print(f"Mass ratio m0/mf : {s.mass_ratio:.4f}")
+    print(f"Propellant      : {s.propellant_mass_kg:.2f} kg")
+    print(f"Inert           : {s.inert_mass_kg:.2f} kg")
+    print(f"Gross           : {s.gross_mass_kg:.2f} kg")
+    print(f"Prop MF         : {s.propellant_mass_fraction:.3f}")
+    if args.thrust:
+        b = burn_from_thrust(s.propellant_mass_kg, args.isp, args.thrust)
+        if b.success:
+            print(f"Burn time       : {b.burn_time_s:.2f} s @ {args.thrust:.0f} N")
+            print(f"mdot            : {b.mdot_kg_s:.4f} kg/s")
+    if args.pair:
+        pair = get_pair(args.pair)
+        of = args.of if args.of is not None else pair.of_default
+        tanks = mixture_tank_volumes(
+            s.propellant_mass_kg, of, pair.fuel.density_kg_m3, pair.oxidizer.density_kg_m3
+        )
+        print(f"Tank fuel       : {tanks['v_fuel_L']:.2f} L ({tanks['m_fuel_kg']:.2f} kg)")
+        print(f"Tank oxidizer   : {tanks['v_oxidizer_L']:.2f} L ({tanks['m_oxidizer_kg']:.2f} kg)")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="rocketcae",
@@ -241,6 +301,33 @@ def build_parser() -> argparse.ArgumentParser:
         help="ex8/ex13/all=numerical tables; samples=smoke 1-14; full=both; list=catalog",
     )
     s.set_defaults(func=cmd_validate)
+
+
+    s = sub.add_parser("refs", help="List approximate real-engine Isp references")
+    s.set_defaults(func=cmd_refs)
+
+    s = sub.add_parser("size", help="Ideal stage sizing from Δv + Isp (no CEA)")
+    s.add_argument("--dv", type=float, required=True, help="Delta-v [m/s]")
+    s.add_argument("--isp", type=float, required=True, help="Specific impulse [s]")
+    s.add_argument("--payload", type=float, default=100.0, help="Payload mass [kg]")
+    s.add_argument("--structure", type=float, default=0.10, help="Structural fraction inert/(inert+prop)")
+    s.add_argument("--thrust", type=float, default=None, help="Optional thrust [N] for burn time")
+    s.add_argument("--pair", default=None, help="Optional pair for tank volume estimate")
+    s.add_argument("--of", type=float, default=None)
+    s.set_defaults(func=cmd_size)
+
+    s = sub.add_parser("mission", help="CEA + sizing + nozzle + tanks + design brief")
+    s.add_argument("--pair", default="lox_rp1")
+    s.add_argument("--of", type=float, default=None)
+    s.add_argument("--pc", type=float, default=50.0)
+    s.add_argument("--eps", type=float, default=40.0)
+    s.add_argument("--dv", type=float, default=3000.0, help="Target delta-v [m/s]")
+    s.add_argument("--payload", type=float, default=100.0)
+    s.add_argument("--structure", type=float, default=0.10)
+    s.add_argument("--thrust", type=float, default=50000.0, help="Design thrust [N]")
+    s.add_argument("--use-sl-isp", action="store_true", help="Use delivered Isp instead of vacuum")
+    s.add_argument("--out", default="results/design_brief.md")
+    s.set_defaults(func=cmd_mission)
 
     return p
 

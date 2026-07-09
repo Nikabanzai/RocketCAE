@@ -31,6 +31,9 @@ Original MATLAB dumps, media, and binaries are **not** published here (local-onl
 | Pareto (max Isp, min Tc) | `rocketcae pareto` |
 | **RP-1311 samples 1–14** (smoke + Ex.8/13 numerical) | `rocketcae validate` |
 | GUI | `streamlit run app/streamlit_app.py` |
+| **Mission helper** (Δv, tanks, nozzle, brief) | `rocketcae mission` |
+| Ideal stage sizing | `rocketcae size` |
+| Real-engine Isp references | `rocketcae refs` |
 
 ## Validation (NASA RP-1311 samples 1–14)
 
@@ -160,4 +163,10 @@ CEA is a separate dependency with its own license and NOTICE.
 3. [nasa/cea](https://github.com/nasa/cea) on GitHub  
 
 
+
+
+
+## Real-life preliminary helpers
+
+See [docs/engineering_helpers.md](docs/engineering_helpers.md) for Δv sizing, tank volumes, 1-D nozzle geometry, design briefs, and open-literature engine comparison. GUI tab: **Mission helper**.
 
