@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use RocketCAE, please cite it as below (and cite NASA CEA / RP-1311 for the thermodynamics engine)."
+message: "If you use RocketCAE, please cite it and the CHEMA 2017 report / NASA CEA as appropriate."
 type: software
 title: "RocketCAE: Preliminary liquid rocket trade studies via NASA CEA"
 version: 0.1.0
@@ -11,19 +11,44 @@ authors:
   - family-names: Kul
     given-names: Muhammed Ali
     email: muhammeda.kul@gmail.com
+    affiliation: Turkish Technic
 abstract: >-
   RocketCAE is a Python library, CLI, and Streamlit GUI for preliminary
   liquid bipropellant rocket performance trades using NASA Chemical Equilibrium
   with Applications (CEA). It is a modern conceptual successor to the 2017
-  CHEMA graduation project at the University of Turkish Aeronautical Association,
-  reimplemented independently on top of the official nasa/cea Python package.
+  CHEMA graduation project (DOI 10.13140/RG.2.2.31672.55043) at the University
+  of Turkish Aeronautical Association, reimplemented independently on the
+  official nasa/cea Python package.
 keywords:
   - rocket propulsion
   - chemical equilibrium
   - NASA CEA
   - liquid rocket engine
+  - CHEMA
   - optimization
 references:
+  - type: report
+    title: "Preliminary Design, Basic Simulation and Optimization of Liquid Rocket Engines"
+    authors:
+      - family-names: Kul
+        given-names: Muhammed Ali
+      - family-names: Seymen
+        given-names: Yağız
+      - family-names: Yıldız
+        given-names: Melih Emre
+      - family-names: Köroğlu
+        given-names: Süleyman Murat
+      - family-names: Balage
+        given-names: Sudantha
+      - family-names: Körpe
+        given-names: Durmuş Sinan
+    year: 2017
+    month: 6
+    institution:
+      name: University of Turkish Aeronautical Association
+    identifiers:
+      - type: doi
+        value: "10.13140/RG.2.2.31672.55043"
   - type: report
     title: "Computer Program for Calculation of Complex Chemical Equilibrium Compositions and Applications II. Users Manual and Program Description"
     authors:

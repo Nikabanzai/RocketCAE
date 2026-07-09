@@ -1,53 +1,52 @@
 # Heritage: CHEMA (2017) → RocketCAE (2026)
 
-## Open-source positioning
+## Primary citation (original graduation project)
 
-RocketCAE is published as a **public educational/engineering tool**: a **conceptual continuation** of the CHEMA graduation project idea, implemented as a **new Python codebase**. It is **not** a release of the original MATLAB sources.
+**Kul, M. A., Seymen, Y., Yıldız, M. E., Köroğlu, S. M., Balage, S., & Körpe, D. S.** (2017).  
+*Preliminary Design, Basic Simulation and Optimization of Liquid Rocket Engines*  
+[Technical report / graduation project]. University of Turkish Aeronautical Association.  
+**DOI:** [10.13140/RG.2.2.31672.55043](https://doi.org/10.13140/RG.2.2.31672.55043)  
+ResearchGate: ~9k reads (stats as of listing).
 
-Please credit:
+### Authors & affiliations (as of public ResearchGate profiles)
 
-1. **NASA CEA** for the equilibrium solver  
-2. **CHEMA authors and advisors** for the 2017 project concept  
-3. **RocketCAE** for the modern packaging, validation harness, and UI  
+| Author | Role | Affiliation (public listing) |
+|--------|------|------------------------------|
+| Muhammed Ali Kul | Student author | Turkish Technic |
+| Yağız Seymen | Student author | University of Turkish Aeronautical Association |
+| Melih Emre Yıldız | Student author | (profile may be unclaimed on RG) |
+| Süleyman Murat Köroğlu | Student author | Istanbul Technical University |
+| S. (Sudantha) Balage | Advisor | Australian Defence Force Academy |
+| Durmuş Sinan Körpe | Advisor | TAI - Turkish Aerospace Industries, Inc. |
 
-## CHEMA (2017)
+Student IDs (from report): Kul 120 122 036 · Seymen 120 122 043 · Yıldız 120 122 056  
+(Astronautical / Aeronautical Engineering, THK University.)
 
-**Title:** Preliminary Design, Basic Simulation and Optimization of Liquid Rocket Engines  
+### What CHEMA was
 
-**Students:** Muhammed Ali Kul, Yağız Seymen, Melih Emre Yıldız, Süleyman Murat Köroğlu  
+- MATLAB GUIDE GUI (`ChemaV7`) calling legacy **CEA**
+- LRE performance, chamber/nozzle (incl. **Rao nozzle** geometry figures), multi-objective optimization hooks
+- Goal: explore many liquid engines and propose viable *preliminary* designs
 
-**University:** University of Turkish Aeronautical Association (THK)  
+### Open-source positioning of RocketCAE
 
-**Advisors:** Assist. Prof. Sudantha Balage, Assist. Prof. Durmuş Sinan Körpe  
+RocketCAE is a **modern Python reimplementation of the CHEMA *concept***:
 
-**Stack:** MATLAB GUIDE GUI (`ChemaV7`) calling legacy CEA (e.g. CEA300.exe), sample RP-1/LOX inputs, optimization hooks, plots.
+- New codebase (not a dump of MATLAB sources or media)
+- Official NASA **`cea`** package (Apache-2.0) instead of CEA300.exe
+- Streamlit GUI + CLI + RP-1311 validation + mission sizing helpers
+- Credits CHEMA authors/advisors as **concept predecessors**; RocketCAE maintained as independent software
 
-### Sample legacy input (conceptual)
+Please cite:
 
-```text
-problem  rkt fac equilibrium shock
-case=1 p,psia=965 ... o/f=2.57776544 sup-ae/at=16 ...
-reactants
-fuel =RP-1 wt=100.
-oxid =O2(L) wt=100.
-```
+1. **CHEMA 2017** (DOI above) for the original project idea  
+2. **NASA CEA / RP-1311** for the thermodynamics engine  
+3. **RocketCAE** (this repo / CITATION.cff) for the modern tool  
 
-Mapped in RocketCAE to curated pair **`lox_rp1`**.
+## Local archive
 
-## What is not in this repository
-
-The local `Chema/` folder (if present on a developer machine) may contain the original dump: MATLAB, CAD, media, binaries, personal files. It is **gitignored** and must not be committed.
-
-## Mapping
-
-| CHEMA | RocketCAE |
-|-------|-----------|
-| MATLAB + CEA300.exe | Python + `pip install cea` |
-| GUIDE GUI | Streamlit |
-| Manual `.inp` | `EngineInputs` + CLI |
-| Optimization tab | `optimize` / Pareto |
-| Limited validation story | RP-1311 Example 8 automated checks |
+`Chema/` on a developer machine (if present) is the original dump and is **gitignored**.
 
 ## Disclaimer
 
-Theoretical results may differ immensely from reality. No liability for hardware decisions based on these tools.
+Same spirit as CHEMA: theoretical results may differ immensely from reality.

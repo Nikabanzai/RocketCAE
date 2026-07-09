@@ -133,7 +133,7 @@ If you use RocketCAE, please cite NASA CEA / RP-1311 for the thermodynamics engi
   title  = {RocketCAE: Preliminary liquid rocket trades via NASA CEA},
   year   = {2026},
   url    = {https://github.com/Nikabanzai/RocketCAE},
-  note   = {Conceptual successor to the 2017 CHEMA graduation project (THK University)}
+  note   = {Conceptual successor to CHEMA 2017, DOI 10.13140/RG.2.2.31672.55043}
 }
 ```
 
@@ -144,7 +144,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and PRs welcome for propellant da
 ## Acknowledgements
 
 - **NASA CEA** — Chemical Equilibrium with Applications ([Apache-2.0](https://github.com/nasa/cea))
-- **CHEMA (2017)** — Kul, Seymen, Yıldız, Köroğlu; THK University; advisors Balage & Körpe  
+- **CHEMA (2017)** — Kul, Seymen, Yıldız, Köroğlu; advisors Balage & Körpe — THK University, June 2017, DOI [10.13140/RG.2.2.31672.55043](https://doi.org/10.13140/RG.2.2.31672.55043)  
   *Concept predecessor only; RocketCAE is independently implemented.*
 
 ## Disclaimer
@@ -169,4 +169,8 @@ CEA is a separate dependency with its own license and NOTICE.
 ## Real-life preliminary helpers
 
 See [docs/engineering_helpers.md](docs/engineering_helpers.md) for Δv sizing, tank volumes, 1-D nozzle geometry, design briefs, and open-literature engine comparison. GUI tab: **Mission helper**.
+
+## Related work
+
+Open-source LRE tools we study for ideas (not dependencies): see [docs/related_work.md](docs/related_work.md) (e.g. cmflannery/rocket, aerospike GUI).
 
